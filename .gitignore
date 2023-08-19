@@ -36,3 +36,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Folders ###
+/.idea
+/target
+.gitignore
+pom.xml
