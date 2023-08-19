@@ -26,7 +26,7 @@ public class testExerciseFour {
     }
 
     @Test
-    public void TestPrintStackOverflowPageTitleOnConsole() throws InterruptedException {
+    public void TestPrintStackOverflowPageTitleOnConsole() {
         driver.get("https://stackoverflow.com/"); // open https://stackoverflow.com/
 
         System.out.println(driver.getTitle()); // retrieve the page title and display it in the console
@@ -43,7 +43,7 @@ public class testExerciseFour {
         // Luam lista rezultatelor si verificam cate exista pe prima pagina
         List<WebElement> allResults = driver.findElements(By.className("s-link"));
         assertEquals(18, allResults.size());
-        allResults.get(0).click();
+        allResults.get(0).click(); // Asa dam click pe primul rezultat si putem testa mai departe la nevoie
     }
 
     @After
