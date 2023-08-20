@@ -16,8 +16,9 @@ import java.util.List;
  * In acest test vom:
  * - accesa google
  * - refuza cookie-uri
- * - cauta pe google prin input box "Java"
- * - afisa in consola numarul de rezultate de pe pagina
+ * - cauta pe google prin input box "Software Development academy"
+ * - intra pe primul link de pe google
+ * - verifica ca linkul sa contina url-ul celor de la SDA
  */
 public class testExerciseEight {
     private WebDriver driver;
