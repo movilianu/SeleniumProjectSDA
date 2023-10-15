@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SeleniumProjectSDA" options="--add-exports java.rmi/sun.rmi.runtime=ALL-UNNAMED" />
+      <module name="SeleniumProjectSDA" options="" />
     </option>
   </component>
 </project>

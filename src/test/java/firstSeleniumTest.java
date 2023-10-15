@@ -3,13 +3,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 public class firstSeleniumTest {
     private WebDriver driver;
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();  // ChromeDriver initialization
+        driver = new EdgeDriver();  // ChromeDriver initialization
     }
 
     @Test
@@ -21,6 +22,6 @@ public class firstSeleniumTest {
 
     @After
     public void tearDown() {
-        driver.close(); // close browser
+        driver.quit(); // close browser
     }
 }

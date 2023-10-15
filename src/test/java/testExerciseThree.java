@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,7 +25,7 @@ public class testExerciseThree {
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();  // ChromeDriver initialization
+        driver = new EdgeDriver();  // ChromeDriver initialization
     }
 
     @Test
@@ -49,13 +50,14 @@ public class testExerciseThree {
         readMeButton.click();
 
         // Cream o conditie de asteptare pentru a ne asigura ca suntem pe pagina corespunzatoare.
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("New ISTQB® Executive Team")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("https://www.istqb.org/certifications/certified-tester-foundation-level")));
 
         // Ne asiguram ca titlul articolului este cel corect.
         newsArticleTitle = driver.findElement(By.tagName("h1"));
-        assertEquals("Title differs from expected one",
+        assertEquals(
                 "ISTQB® releases Certified Tester Foundation Level v4.0 (CTFL)",
-                newsArticleTitle.getText());
+                newsArticleTitle.getText(),
+                "Title differs from expected one");
     }
 
     @After

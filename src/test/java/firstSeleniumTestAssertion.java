@@ -1,8 +1,10 @@
+import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +13,7 @@ public class firstSeleniumTestAssertion {
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();  // ChromeDriver initialization
+        driver = new EdgeDriver();  // ChromeDriver initialization
     }
 
     @Test
@@ -19,11 +21,11 @@ public class firstSeleniumTestAssertion {
         driver.get("https://sdacademy.dev"); // open https://sdacademy.dev
 
         // checking if the current page title is as expected
-        assertEquals(driver.getTitle(), "Software Development Academy - Learn IT from Scratch");
+        assertEquals("Software Development Academy | Give IT a go!", driver.getTitle());
     }
 
     @After
     public void tearDown() {
-        driver.close(); // close browser
+        driver.quit(); // close browser
     }
 }

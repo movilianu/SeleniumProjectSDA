@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.jupiter.api.Assertions;
@@ -18,7 +19,7 @@ public class testExerciseNine {
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();  // ChromeDriver initialization
+        driver = new EdgeDriver();  // ChromeDriver initialization
     }
 
     @Test
