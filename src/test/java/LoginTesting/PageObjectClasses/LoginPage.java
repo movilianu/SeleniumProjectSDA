@@ -16,7 +16,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    JavascriptExecutor js = (JavascriptExecutor) driver;;
+    JavascriptExecutor js = (JavascriptExecutor) driver;
 
     //*********Web Elements*********
     By usernameBy = By.xpath("//input[@placeholder='Username']");

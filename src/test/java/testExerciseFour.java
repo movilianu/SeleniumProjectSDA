@@ -45,7 +45,7 @@ public class testExerciseFour {
         // Luam lista rezultatelor si verificam cate exista pe prima pagina
         List<WebElement> allResults = driver.findElements(By.className("s-link"));
         assertEquals(20, allResults.size());
-        allResults.get(0).click(); // Asa dam click pe primul rezultat si putem testa mai departe la nevoie
+        allResults.get(4).click(); // Asa dam click pe primul rezultat si putem testa mai departe la nevoie
     }
 
     @After
