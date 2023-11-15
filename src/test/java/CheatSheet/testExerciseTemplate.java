@@ -21,9 +21,13 @@ public class testExerciseTemplate {
     // Stabilim setupul pentru browserul pe care il vom folosi
     @Before
     public void setUp() {
+        System.setProperty("webdriver.edge.driver", "src/test/resources/chromedriver.exe");
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("");
         driver = new ChromeDriver(options);  // ChromeDriver initialization
+        driver.manage().window().maximize();
     }
 
     @Test
@@ -45,6 +49,15 @@ public class testExerciseTemplate {
         // asa apasam pe mai multe taste deodata
         actions.keyDown(Keys.CONTROL).keyDown(Keys.ALT).sendKeys(Keys.DELETE).perform();
 
+                   // Verificăm dacă butonul de cookies este prezent
+        WebElement acceptCookie = null;
+        try {
+            acceptCookie = driver.findElement(By.cssSelector("body > div.gdpr-cookie-banner.js-gdpr-cookie-banner.pad-sep-xs.pad-hrz-none.show > div > div.col-xs-12.col-sm-5.col-md-4.col-lg-3.cookie-banner-buttons > button.btn.btn-primary.js-accept.gtm_h76e8zjgoo.btn-block"));
+            System.out.println("Cookie acceptat");
+            acceptCookie.click();
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            System.out.println("Butonul Cookie nu a fost găsit. Continuăm fără acceptarea cookie-urilor.");
+        }
 
         // Gasim elemente in functie de xpath
         WebElement altWebElement = driver.findElement(By.classname(".tag.numeleclasei.alDoileaNumeAlClaseiDacaExista"));

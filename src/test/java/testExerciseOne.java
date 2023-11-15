@@ -1,17 +1,17 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.openqa.selenium.Keys.*;
 
@@ -22,7 +22,9 @@ public class testExerciseOne {
     public void setUp() {
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--headless");
         driver = new EdgeDriver(options);  // EdgeDriver initialization
+        driver.manage().window().maximize();
     }
 
     @Test
@@ -43,17 +45,18 @@ public class testExerciseOne {
         searchInput.sendKeys(ENTER);
 
         // Identificam produsul si il accesam
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         WebElement castileNoastre = driver.findElement(By.xpath("//img[starts-with(@alt, 'Casti Apple Airpods Pro (2nd Generation) - 2022')]"));
         castileNoastre.click();
+
         // Metoda #1 de amanare a timpului pentru incarcarea valorii selectorului
              // Schema pentru asteptarea incarcarii paginii/elementului
         WebDriverWait waitForResults = new WebDriverWait(driver, Duration.ofSeconds(10));
             // waiting for results visibility
         waitForResults.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='js-section-title']")));
-
+        switchToNewTab(driver);
         // Metoda #2 de amanare a timpului pentru incarcarea valorii selectorului
-        Thread.sleep(12000);
+        Thread.sleep(5000);
 
         // Gasim elementul din pagina care ne intereseaza
         WebElement currentPromotedProductsTitle = driver.findElement(By.xpath("//span[@class='js-section-title']"));
@@ -63,7 +66,7 @@ public class testExerciseOne {
         JavascriptExecutor js = (JavascriptExecutor) driver;
             // Executarea codului JavaScript pentru a efectua scroll până la elementul dorit
         js.executeScript("arguments[0].scrollIntoView();", currentPromotedProductsTitle);
-
+        Thread.sleep(5000);
         // Salvarea valorilor elementelor de interes
         String currentPromotedProductsTitleText = currentPromotedProductsTitle.getText();
         String newInputBoxValue = driver.findElement(By.xpath("//input[@id='searchboxTrigger']")).getAttribute("placeholder");
@@ -88,6 +91,11 @@ public class testExerciseOne {
         } else {
             System.out.println("Valoarea stocată anterior pentru currentPromotedProductsTitleText este corectă.");
         }
+    }
+    private static void switchToNewTab(WebDriver driver) {
+        // Switch to the new tab
+        String newTabHandle = driver.getWindowHandles().toArray()[1].toString();
+        driver.switchTo().window(newTabHandle);
     }
 
     @After
