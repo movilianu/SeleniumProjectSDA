@@ -21,7 +21,7 @@ public class testExerciseTemplate {
     // Stabilim setupul pentru browserul pe care il vom folosi
     @Before
     public void setUp() {
-        System.setProperty("webdriver.edge.driver", "src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");

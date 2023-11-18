@@ -3,6 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import static org.junit.Assert.*;
 
@@ -11,7 +12,13 @@ public class firstSeleniumTest {
 
     @Before
     public void setUp() {
-        driver = new EdgeDriver();  // ChromeDriver initialization
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("");
+        driver = new ChromeDriver(options);  // ChromeDriver initialization
+        driver.manage().window().maximize();
     }
 
     @Test
