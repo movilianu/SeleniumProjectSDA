@@ -38,6 +38,7 @@ public class testExerciseNine {
         passwordInput = driver.findElement(By.xpath("//input[@placeholder='Password']"));
         loginButton = driver.findElement(By.xpath("//button[@type='submit']"));
 
+
         usernameInput.sendKeys("Admin"); // in the "Username" field enter "Admin"
         passwordInput.sendKeys("admin123"); // in the "Password" field enter "admin123"
         loginButton.click(); // click "Login" button
@@ -48,8 +49,8 @@ public class testExerciseNine {
         Assertions.assertEquals(expectedUrl, currentUrl); // same as above
     }
 
-    @After
-    public void tearDown() {
-        driver.quit(); // close browser
-    }
+//    @After
+//    public void tearDown() {
+//        driver.quit(); // close browser
+//    }
 }

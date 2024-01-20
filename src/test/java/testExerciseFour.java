@@ -48,6 +48,7 @@ public class testExerciseFour {
         allResults.get(4).click(); // Asa dam click pe primul rezultat si putem testa mai departe la nevoie
     }
 
+
     @After
     public void tearDown() {
         driver.quit(); // close browser

@@ -53,8 +53,8 @@ public class testExerciseTemplate {
         WebElement acceptCookie = null;
         try {
             acceptCookie = driver.findElement(By.cssSelector("body > div.gdpr-cookie-banner.js-gdpr-cookie-banner.pad-sep-xs.pad-hrz-none.show > div > div.col-xs-12.col-sm-5.col-md-4.col-lg-3.cookie-banner-buttons > button.btn.btn-primary.js-accept.gtm_h76e8zjgoo.btn-block"));
-            System.out.println("Cookie acceptat");
             acceptCookie.click();
+            System.out.println("Cookie acceptat");
         } catch (org.openqa.selenium.NoSuchElementException e) {
             System.out.println("Butonul Cookie nu a fost găsit. Continuăm fără acceptarea cookie-urilor.");
         }

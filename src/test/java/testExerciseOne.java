@@ -22,7 +22,7 @@ public class testExerciseOne {
     public void setUp() {
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         driver = new EdgeDriver(options);  // EdgeDriver initialization
         driver.manage().window().maximize();
     }
@@ -54,10 +54,9 @@ public class testExerciseOne {
         WebDriverWait waitForResults = new WebDriverWait(driver, Duration.ofSeconds(10));
             // waiting for results visibility
         waitForResults.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='js-section-title']")));
-        switchToNewTab(driver);
+//        switchToNewTab(driver);
         // Metoda #2 de amanare a timpului pentru incarcarea valorii selectorului
         Thread.sleep(5000);
-
         // Gasim elementul din pagina care ne intereseaza
         WebElement currentPromotedProductsTitle = driver.findElement(By.xpath("//span[@class='js-section-title']"));
 
@@ -92,11 +91,11 @@ public class testExerciseOne {
             System.out.println("Valoarea stocată anterior pentru currentPromotedProductsTitleText este corectă.");
         }
     }
-    private static void switchToNewTab(WebDriver driver) {
-        // Switch to the new tab
-        String newTabHandle = driver.getWindowHandles().toArray()[1].toString();
-        driver.switchTo().window(newTabHandle);
-    }
+//    private static void switchToNewTab(WebDriver driver) {
+//        // Switch to the new tab
+//        String newTabHandle = driver.getWindowHandles().toArray()[1].toString();
+//        driver.switchTo().window(newTabHandle);
+//    }
 
     @After
     public void tearDown() {

@@ -6,7 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,6 +28,7 @@ public class testExerciseFive {
     @Before
     public void setUp() {
         driver = new EdgeDriver();  // ChromeDriver initialization
+        driver.manage().window().maximize();
     }
 
     @Test
@@ -44,9 +48,20 @@ public class testExerciseFive {
         assertEquals("Introdu numărul AWB", placeholderInputBox);
         textButonCautareAwb = driver.findElement(By.xpath("//span[contains(text(), 'Verifică AWB')]")).getText();
         assertEquals("VERIFICĂ AWB", textButonCautareAwb);
+        WebElement acceptCookie = null;
+        try {
+            acceptCookie = driver.findElement(By.id("wt-cli-accept-btn"));
+            acceptCookie.click();
+            System.out.println("Cookie acceptat");
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            System.out.println("Butonul Cookie nu a fost găsit. Continuăm fără acceptarea cookie-urilor.");
+        }
+
         butoaneMeniuPrincipal = driver.findElements(By.xpath("//div[@class='menu-meniu-principal-container']/ul/li"));
         int s=butoaneMeniuPrincipal.size();
-        String[] listaExpectedNumeButoane = {"LIVREAZĂ CU SAMEDAY", "LOGIN eAWB", "", "Servicii", "easybox", "Despre noi", "Cariere", "Contact", "RO"};
+        String[] listaExpectedNumeButoane = {"", "Servicii", "Despre noi", "Cariere", "Contact", "LOGIN", "TRIMITE COLET\n" +
+                "Trimite colete cu Sameday indiferent daca esti persoana fizica sau companie\n" +
+                "new", "RO"};
         for(int i=0;i<s;i++){
             textButonMeniuPrincipal = butoaneMeniuPrincipal.get(i).getText();
 //            System.out.println(butoaneMeniuPrincipal.get(i).getText());
