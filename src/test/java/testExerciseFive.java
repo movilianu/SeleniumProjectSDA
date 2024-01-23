@@ -53,16 +53,16 @@ public class testExerciseFive {
             acceptCookie = driver.findElement(By.id("wt-cli-accept-btn"));
             acceptCookie.click();
             System.out.println("Cookie acceptat");
-        } catch (org.openqa.selenium.NoSuchElementException e) {
+        } catch (org.openqa.selenium.NoSuchElementException eroareMAximaSaMoaraJana) {
             System.out.println("Butonul Cookie nu a fost găsit. Continuăm fără acceptarea cookie-urilor.");
         }
 
         butoaneMeniuPrincipal = driver.findElements(By.xpath("//div[@class='menu-meniu-principal-container']/ul/li"));
-        int s=butoaneMeniuPrincipal.size();
+        int s = butoaneMeniuPrincipal.size();
         String[] listaExpectedNumeButoane = {"", "Servicii", "Despre noi", "Cariere", "Contact", "LOGIN", "TRIMITE COLET\n" +
                 "Trimite colete cu Sameday indiferent daca esti persoana fizica sau companie\n" +
                 "new", "RO"};
-        for(int i=0;i<s;i++){
+        for(int i=0; i<s; i++){
             textButonMeniuPrincipal = butoaneMeniuPrincipal.get(i).getText();
 //            System.out.println(butoaneMeniuPrincipal.get(i).getText());
             assertEquals(listaExpectedNumeButoane[i],textButonMeniuPrincipal);
