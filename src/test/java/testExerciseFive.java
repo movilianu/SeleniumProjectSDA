@@ -15,12 +15,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
-    In acest exercitiu vom:
-    - intra pe sameday.ro
-    - valida numele paginii
-    - verifica ca textul placeholder-ului din caseta de cautare sa fie "Introdu numărul AWB"
-    - verifica ca textul butonului de cautare sa fie "Verifică AWB"
-    - verifica valorile textelor din meniul principal
+ * In acest exercitiu vom:
+ * - intra pe sameday.ro
+ * - validam numele paginii
+ * - verifica ca textul placeholder-ului din caseta de cautare sa fie "Introdu numărul AWB"
+ * - verifica ca textul butonului de cautare sa fie "Verifică AWB"
+ * - verifica valorile textelor din meniul principal
  */
 public class testExerciseFive {
     private WebDriver driver;
@@ -53,19 +53,19 @@ public class testExerciseFive {
             acceptCookie = driver.findElement(By.id("wt-cli-accept-btn"));
             acceptCookie.click();
             System.out.println("Cookie acceptat");
-        } catch (org.openqa.selenium.NoSuchElementException eroareMAximaSaMoaraJana) {
+        } catch (org.openqa.selenium.NoSuchElementException eroareMentionata) {
             System.out.println("Butonul Cookie nu a fost găsit. Continuăm fără acceptarea cookie-urilor.");
         }
 
         butoaneMeniuPrincipal = driver.findElements(By.xpath("//div[@class='menu-meniu-principal-container']/ul/li"));
-        int s = butoaneMeniuPrincipal.size();
-        String[] listaExpectedNumeButoane = {"", "Servicii", "Despre noi", "Cariere", "Contact", "LOGIN", "TRIMITE COLET\n" +
+        int marimeLista = butoaneMeniuPrincipal.size();
+        String[] listaExpectedNumeButoane = {"", "Servicii", "Despre noi", "Cariere", "Contact", "LOG IN eAWB", "TRIMITE COLET\n" +
                 "Trimite colete cu Sameday indiferent daca esti persoana fizica sau companie\n" +
                 "new", "RO"};
-        for(int i=0; i<s; i++){
+        for (int i = 0; i < marimeLista; i++) {
             textButonMeniuPrincipal = butoaneMeniuPrincipal.get(i).getText();
 //            System.out.println(butoaneMeniuPrincipal.get(i).getText());
-            assertEquals(listaExpectedNumeButoane[i],textButonMeniuPrincipal);
+            assertEquals(listaExpectedNumeButoane[i], textButonMeniuPrincipal);
         }
     }
 
